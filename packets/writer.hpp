@@ -12,5 +12,7 @@
     *(type*)buffer = *ptr; \
     buffer += sizeof(type);
 
-void write_uleb128(uint16_t value, char*& buffer);
-void write_string(char* value, char*& buffer);
+namespace bancho::packets::writer {
+    void write_uleb128(uint16_t value, char*& buffer);
+    void write_string(char* value, char*& buffer);
+}

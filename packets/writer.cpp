@@ -1,7 +1,9 @@
 #include "writer.hpp"
 #include <cstring>
 
-void write_uleb128(uint16_t value, char*& buffer) {
+using namespace bancho::packets;
+
+void writer::write_uleb128(uint16_t value, char*& buffer) {
     
     do {
         uint8_t byte = value & 0x7f;
@@ -13,7 +15,7 @@ void write_uleb128(uint16_t value, char*& buffer) {
     } while (value != 0);
 }
 
-void write_string(char* value, char*& buffer) {
+void writer::write_string(char* value, char*& buffer) {
     uint16_t length = strlen(value);
     write_uleb128(length, buffer);
     memcpy(buffer, value, length);

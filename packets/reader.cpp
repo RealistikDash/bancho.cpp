@@ -1,7 +1,9 @@
 #include "reader.hpp"
 #include <cstring>
 
-uint16_t read_uleb128(char*& buffer) {
+using namespace bancho::packets;
+
+uint16_t reader::read_uleb128(char*& buffer) {
     uint16_t result = 0;
     uint8_t shift = 0;
     uint8_t byte;
@@ -15,7 +17,7 @@ uint16_t read_uleb128(char*& buffer) {
     return result;
 }
 
-char* read_string(char*& buffer) {
+char* reader::read_string(char*& buffer) {
     uint16_t length = read_uleb128(buffer);
     char* result = new char[length + 1];
     memcpy(result, buffer, length);
