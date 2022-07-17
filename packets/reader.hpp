@@ -12,9 +12,12 @@
     type name = *(type*)buffer; \
     buffer += sizeof(type);
 
-// Reads a string from the buffer, allocating it on the heap and returning the pointer.
-// Increments the buffer pointer.
-char* read_string(char*& buffer);
+namespace bancho::packets::reader {
+    // Reads a string from the buffer, allocating it on the heap and returning the pointer.
+    // Increments the buffer pointer.
+    char* read_string(char*& buffer);
 
-// Reads an unsigned LEB128 from the buffer. Additionally, increments the buffer pointer.
-uint16_t read_uleb128(char*& buffer);
+    // Reads an unsigned LEB128 from the buffer. Additionally, increments the buffer pointer.
+    uint16_t read_uleb128(char*& buffer);
+}
+
